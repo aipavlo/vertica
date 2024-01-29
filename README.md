@@ -1,1 +1,1 @@
-# vertica
+# There will be useful scripts for Vertica DB
