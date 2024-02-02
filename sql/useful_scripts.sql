@@ -2,6 +2,9 @@
 SELECT ANALYZE_STATISTICS('public.table_name', 100);
 SELECT ANALYZE_HISTOGRAM('public.table_name'); -- alias for ANALYZE_STATISTICS
 
+-- REMOVE DELETED DATA
+SELECT PURGE('schema_name.table_name');
+
 SELECT AUDIT('public.table_name', 'table', 0, 100);
 SELECT AUDIT('public', 'schema', 0, 100);
 SELECT AUDIT_FLEX('flex.table_name');
