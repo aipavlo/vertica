@@ -33,6 +33,13 @@ GROUP BY anchor_table_name, anchor_table_schema
 ORDER BY total_used_bytes DESC
 LIMIT 100;
 
+-- MONITOR DISK SPACE USAGE
+SELECT projection_schema, anchor_table_name, 
+to_char (sum (used_bytes)/1024/1024/1024,'999,999.99') as disk_space_used_gb 
+FROM projection_storage 
+GROUP by projection_schema, anchor_table_name 
+ORDER by disk_space_used_gb desc limit 50;
+
 -- 100 BIGGEST ROS-CONTAINERS IN VERTICA DB ACCORDING TO THE TOTAL DISK SPACE AND ROWS COUNT
 SELECT *
 FROM v_monitor.storage_containers
