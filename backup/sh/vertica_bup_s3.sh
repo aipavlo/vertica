@@ -5,3 +5,5 @@ export VBR_BACKUP_STORAGE_ACCESS_KEY_ID=<key>
 export VBR_BACKUP_STORAGE_SECRET_ACCESS_KEY=<secret-key>
 
 opt/vertica/bin/vbr --task backup -c backup_configs/db_backup.ini
+##### to create folders if not exists with regeneration of the identity files
+# opt/vertica/bin/vbr --task backup -c backup_configs/db_backup.ini --s3-force-init
