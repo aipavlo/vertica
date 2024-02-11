@@ -1,3 +1,6 @@
+SELECT SET_CONFIG_PARAMETER ('AWSRegion','us-west-1');
+ALTER SESSION SET AWSAuth='ID:SECRET';
+
 SELECT 'SELECT ADD_LOCATION(' || COALESCE(location_path,'') || ', ' || 
 COALESCE(node_name,'') || ', ' || 
 COALESCE(location_usage ,'') || ', ' || 

@@ -1,4 +1,4 @@
-CREATE OR REPLACE PROCEDURE core_5.merge_tbl(anc_name varchar, merge_statement varchar(10000)) AS
+CREATE OR REPLACE PROCEDURE schema_name.merge_tbl(anc_name varchar, merge_statement varchar(35000)) AS
 $$
 DECLARE 
 rows_to_insert int;
