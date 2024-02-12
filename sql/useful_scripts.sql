@@ -5,15 +5,15 @@ SELECT ANALYZE_HISTOGRAM('public.table_name'); -- alias for ANALYZE_STATISTICS
 -- REMOVE DELETED DATA/VECTORS
 SELECT PURGE('schema_name.table_name');
 
--- CHECK VERSION
+-- CHECK VERSION AND LICENCE
 SELECT VERSION();
 SELECT DISPLAY_LICENSE();
+SELECT GET_COMPLIANCE_STATUS(); -- check vertica actual audit status 
 
 -- CHECK AUDIT AND LICENCE
 SELECT AUDIT('public.table_name', 'table', 0, 100);
 SELECT AUDIT('public', 'schema', 0, 100);
 SELECT AUDIT_FLEX('flex.table_name');
-SELECT GET_COMPLIANCE_STATUS(); -- check vertica actual audit status 
 SELECT AUDIT_LICENSE_SIZE(); -- trigger an immediate audit
 SELECT (SUM(AUDIT_LENGTH(column_name)) FROM schema_name.table_name;
 
