@@ -7,6 +7,7 @@ SELECT PURGE('schema_name.table_name');
 
 -- CHECK VERSION
 SELECT VERSION();
+SELECT DISPLAY_LICENSE();
 
 -- CHECK AUDIT AND LICENCE
 SELECT AUDIT('public.table_name', 'table', 0, 100);
