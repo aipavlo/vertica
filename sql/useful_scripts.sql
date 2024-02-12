@@ -117,6 +117,13 @@ PARTITION BY (date_part('year', table_name.ts))
 GROUP BY (date_part('year', table_name.ts))
 REORGANIZE;
 
+SELECT DISTINCT partition_key
+FROM PARTITIONS
+WHERE table_schema = 'schema_name'
+AND projection_name ILIKE 'table_name%'
+ORDER BY partition_key DESC
+
+
 
 --- DDL ---
 -- CHECK ENABLED AND DISABLED CONSTRAINTS
