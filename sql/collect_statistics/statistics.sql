@@ -5,6 +5,5 @@ WHERE event_timestamp > sysdate -7
 AND USER_NAME != 'dbadmin'
 AND event_severity = 'Critical'
 GROUP BY USER_NAME, EVENT_TYPE
-ORDER BY 3 DESC 
-LIMIT 100
-;
+ORDER BY COUNT(EVENT_TYPE) DESC 
+LIMIT 100 ;
