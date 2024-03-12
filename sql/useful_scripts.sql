@@ -67,8 +67,12 @@ WHERE table_schema = 'schema_name';
 -- CHECK ACTIVE SESSIONS
 SELECT * FROM SESSIONS;
 SELECT * FROM v_monitor.query_requests WHERE user_name = 'dbadmin' AND is_executing = 'True';
+
 -- DROP ALL OTHERS SESSIONS
 SELECT CLOSE_ALL_SESSIONS(); -- close all sessions except during session
+SELECT CLOSE_SESSION ( 'sessionid'  );
+SELECT CLOSE_USER_SESSIONS ( 'user‑name' );
+
 -- CHECK DATACOLLECTOR ERRORS
 SELECT 
 "time", user_name, transaction_id, line_number, function_name, message, error_code, vertica_code, detail, hint, log_message, log_detail, log_hint, log_context, error_level_name, cursor_position
