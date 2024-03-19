@@ -69,9 +69,10 @@ SELECT * FROM SESSIONS;
 SELECT * FROM v_monitor.query_requests WHERE user_name = 'dbadmin' AND is_executing = 'True';
 
 -- DROP ALL OTHERS SESSIONS
-SELECT CLOSE_ALL_SESSIONS(); -- close all sessions except during session
+SELECT CLOSE_ALL_SESSIONS(); -- close all sessions except during session   v_monitor.sessions
 SELECT CLOSE_SESSION ( 'sessionid'  );
 SELECT CLOSE_USER_SESSIONS ( 'user‑name' );
+-- Close all sessions command sent. Check v_monitor.sessions for progress.
 
 -- CHECK DATACOLLECTOR ERRORS
 SELECT 
