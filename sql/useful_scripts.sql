@@ -51,6 +51,17 @@ FROM v_monitor.storage_containers
 ORDER BY used_bytes DESC, total_row_count DESC
 LIMIT 100;
 
+-- CHECK DATA SKEW
+SELECT node_name, projection_name,
+SUM(total_row_count) AS total_row_count,
+SUM(deleted_row_count) AS deleted_row_count, 
+SUM(used_bytes) AS used_bytes
+FROM v_monitor.storage_containers WHERE 1=1 
+AND schema_name IN ('schema_name')
+AND projection_name LIKE 'table_name_%'
+GROUP BY 1, 2
+ORDER BY 2, 1
+
 -- BIGGEST TABLES ACCORDING TO PHYSICAL STORAGE
 SELECT anchor_table_name, SUM(used_bytes) AS raw_data_size
 FROM v_monitor.projection_storage
