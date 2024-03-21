@@ -59,8 +59,14 @@ SUM(used_bytes) AS used_bytes
 FROM v_monitor.storage_containers WHERE 1=1 
 AND schema_name IN ('schema_name')
 AND projection_name LIKE 'table_name_%'
-GROUP BY 1, 2
-ORDER BY 2, 1
+GROUP BY 1, 2 ORDER BY 2, 1;
+
+-- CHECK NUMBERS OF ROS-CONTAINERS OF PROJECTION ON NODES
+SELECT node_name, projection_name,
+COUNT(DISTINCT storage_oid)
+FROM v_monitor.storage_containers WHERE 1=1
+AND projection_name LIKE 'FT_operation_%'
+GROUP BY 1, 2 ORDER BY 2, 1;
 
 -- BIGGEST TABLES ACCORDING TO PHYSICAL STORAGE
 SELECT anchor_table_name, SUM(used_bytes) AS raw_data_size
