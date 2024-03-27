@@ -61,6 +61,11 @@ AND schema_name IN ('schema_name')
 AND projection_name LIKE 'table_name_%'
 GROUP BY 1, 2 ORDER BY 2, 1;
 
+-- CHECK VIEWS
+SELECT * FROM v_catalog.view_tables 
+WHERE reference_table_schema = 'your_schema' 
+AND reference_table_name = 'your_table';
+
 -- CHECK NUMBERS OF ROS-CONTAINERS OF PROJECTION ON NODES
 SELECT node_name, projection_name,
 COUNT(DISTINCT storage_oid)
