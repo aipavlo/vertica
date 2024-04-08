@@ -97,6 +97,7 @@ SELECT
     volatility 
 FROM 
     v_catalog.user_functions;
+SELECT * FROM USER_LIBRARIES;
 
 -- CHECK ACTIVE SESSIONS
 SELECT * FROM SESSIONS;
