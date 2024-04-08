@@ -86,6 +86,18 @@ SELECT
 FROM v_catalog.columns
 WHERE table_schema = 'schema_name';
 
+-- CHECK ALL FUNCTIONS
+SELECT 
+    schema_name AS function_schema, 
+    function_name, 
+    procedure_type, 
+    function_return_type AS return_type, 
+    function_argument_type AS arguments, 
+    function_definition, 
+    volatility 
+FROM 
+    v_catalog.user_functions;
+
 -- CHECK ACTIVE SESSIONS
 SELECT * FROM SESSIONS;
 SELECT * FROM v_monitor.query_requests WHERE user_name = 'dbadmin' AND is_executing = 'True';
