@@ -240,6 +240,20 @@ WHEN NOT MATCHED THEN
     INSERT (col1, col2, Metadata)
     VALUES (t1.col1, t1.col2, t1.Metadata);
 
+--- UPDATE STATEMENT ---
+UPDATE schema_name.table_name
+SET 
+column_name = t1.column_name
+FROM (
+SELECT 
+column_id, 
+column_name
+FROM v_temp_schema.stage_table_name
+WHERE to_insert = 0
+) AS t1
+WHERE schema_name.table_name.column_id = t1.column_id
+;
+
 -- Inspects a file in Parquet, ORC, JSON, or Avro format and returns a CREATE TABLE or CREATE EXTERNAL TABLE statement based on its contents.
 SELECT INFER_TABLE_DDL ('/data/restaurants.json' USING PARAMETERS table_name='restaurants', format='json');
 
