@@ -31,6 +31,12 @@ SELECT COUNT(1) FROM NODES WHERE NODE_STATE = 'UP';
 SELECT * FROM LOCKS 
 WHERE OBJECT_NAME LIKE '%table_name%';
 
+-- CHECK QUERIES PROFILES
+SELECT 
+*
+FROM query_profiles
+ORDER BY query_start DESC ;
+
 -- 100 BIGGEST TABLES IN VERTICA DB ACCORDING TO THE TOTAL DISK SPACE
 SELECT anchor_table_schema, anchor_table_name, SUM(used_bytes) AS total_used_bytes
 FROM v_monitor.column_storage
