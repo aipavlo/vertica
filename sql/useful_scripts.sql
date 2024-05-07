@@ -57,6 +57,12 @@ FROM v_monitor.storage_containers
 ORDER BY used_bytes DESC, total_row_count DESC
 LIMIT 100;
 
+-- CHECK NUMBERS OF ROS CONTAINERS (MUST BE < 500)
+SELECT node_name, projection_schema, projection_name, SUM(ros_count) AS ros_count 
+FROM v_monitor.projection_storage 
+GROUP BY node_name, projection_schema, projection_name 
+ORDER BY ros_count DESC;
+
 -- CHECK DATA SKEW
 SELECT node_name, projection_name,
 SUM(total_row_count) AS total_row_count,
