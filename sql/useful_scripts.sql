@@ -63,6 +63,14 @@ FROM v_monitor.projection_storage
 GROUP BY node_name, projection_schema, projection_name 
 ORDER BY ros_count DESC;
 
+-- CHECK NUMBERS OF DV FILES (DELETE VECTOR)
+SELECT 
+node_name, schema_name, projection_name, sum(deleted_row_count) AS sum_deleted_rows, COUNT(DISTINCT dv_oid) AS cnt_dv_files 
+FROM v_monitor.delete_vectors
+GROUP BY node_name, schema_name, projection_name
+ORDER BY cnt_dv_files DESC 
+;
+
 -- CHECK DATA SKEW
 SELECT node_name, projection_name,
 SUM(total_row_count) AS total_row_count,
