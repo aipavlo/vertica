@@ -5,3 +5,6 @@ WHERE event_type='REQUEST_QUEUED';
 
 -- create tuple mover task
 SELECT DO_TM_TASK('mergeout', 'schema_name.table_name');
+
+-- CREATE MERGEOUT FOR DV FILES
+SELECT DO_TM_TASK('dvmergeout');
