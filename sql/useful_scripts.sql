@@ -121,7 +121,10 @@ SELECT * FROM USER_LIBRARIES;
 
 -- CHECK ACTIVE SESSIONS
 SELECT * FROM SESSIONS;
-SELECT * FROM v_monitor.query_requests WHERE user_name = 'dbadmin' AND is_executing = 'True';
+SELECT * FROM v_monitor.query_requests 
+WHERE user_name = 'dbadmin' 
+AND is_executing = 'True' 
+ORDER BY start_timestamp DESC ;
 
 -- DROP ALL OTHERS SESSIONS
 SELECT CLOSE_ALL_SESSIONS(); -- close all sessions except during session   v_monitor.sessions
