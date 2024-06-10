@@ -31,6 +31,8 @@ SELECT COUNT(1) FROM NODES WHERE NODE_STATE = 'UP';
 SELECT * FROM LOCKS 
 WHERE OBJECT_NAME LIKE '%table_name%';
 
+-- CHECK MERGEOUT PROFILES
+
 -- CHECK QUERIES PROFILES
 SELECT 
 *
@@ -90,7 +92,7 @@ AND reference_table_name = 'your_table';
 SELECT node_name, projection_name,
 COUNT(DISTINCT storage_oid)
 FROM v_monitor.storage_containers WHERE 1=1
-AND projection_name LIKE 'FT_operation_%'
+AND projection_name LIKE 'table_name_%'
 GROUP BY 1, 2 ORDER BY 2, 1;
 
 -- BIGGEST TABLES ACCORDING TO PHYSICAL STORAGE
