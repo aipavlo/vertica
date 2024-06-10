@@ -176,10 +176,15 @@ SELECT MOVE_PARTITIONS_TO_TABLE (
 
 -- PARTITIONS
 SELECT DUMP_TABLE_PARTITION_KEYS('schema_name.table_name');
+
+-- REORGANIZE PARTITIONING
 ALTER TABLE schema_name.table_name
 PARTITION BY (date_part('year', table_name.ts))
 GROUP BY (date_part('year', table_name.ts))
 REORGANIZE;
+
+-- CHECK STATUS OF REPARTITIONING
+SELECT * FROM PARTITION_STATUS WHERE table_name = 'schema_name.table_name';
 
 SELECT DISTINCT partition_key
 FROM PARTITIONS
